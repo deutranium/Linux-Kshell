@@ -1,11 +1,14 @@
-#include "prompt.h"
 #include "shell.h"
+#include "prompt.h"
+#include "utils.h"
 
-int main (void){
+int main(void){
 
     char* line_ptr = NULL;
     size_t line_buffer_size = 0;
     ssize_t line_size = 0;
+
+    init();
 
     while(1){
 

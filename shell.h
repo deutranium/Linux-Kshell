@@ -4,5 +4,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <limits.h>
+
+char* logged_user_name;
+char* host_name;
+
 
 #endif
