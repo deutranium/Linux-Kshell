@@ -1,6 +1,7 @@
 #include "shell.h"
 #include "prompt.h"
 #include "utils.h"
+#include "command_cd.h"
 
 int main(void){
 
@@ -13,6 +14,7 @@ int main(void){
     while(1){
 
         free(line_ptr);
+        line_ptr = malloc(sizeof(char)*500);
 
         line_buffer_size = 0;
         line_size = 0;
@@ -24,6 +26,10 @@ int main(void){
             free(line_ptr);
             break;
         }
+
+        line_ptr[strlen(line_ptr) - 1] = 0;
+
+        cd(line_ptr);
     }
 
     return 0;
