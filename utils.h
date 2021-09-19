@@ -6,5 +6,8 @@
 void init();
 void get_relative_path(char* path);
 bool str_prefix(const char* pre, const char* str);
+char* trim_str(char* trim_str);
+void parse_input_string(char* str);
+
 
 #endif

@@ -31,15 +31,7 @@ int main(void){
 
         line_ptr[strlen(line_ptr) - 1] = 0;
 
-        if(str_prefix("cd", line_ptr)){
-            cd(&line_ptr[3]);
-        }
-        else if(str_prefix("pwd", line_ptr)){
-            pwd();
-        }
-        else if(str_prefix("echo", line_ptr)){
-            echo(&line_ptr[5]);
-        }
+        parse_input_string(line_ptr);
     }
 
     return 0;

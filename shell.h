@@ -16,5 +16,7 @@ char relative_path[PATH_MAX + 1];
 char* absolute_path;
 char* prev_path;
 
+char* command_list[100][1000];
+
 
 #endif
