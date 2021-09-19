@@ -7,8 +7,11 @@ bool cd(char* path){
 
     int cd_err = -2;
 
-    printf("CD: %s\n", path);
-
+    if(*path == 0){
+        cd_err = chdir(root_dir);
+        return true;
+    }
+    
     if(!strcmp(&path[0], "~")){
         cd_err = chdir(root_dir);
         path += 2;
