@@ -2,6 +2,7 @@
 #include "prompt.h"
 #include "utils.h"
 #include "command_cd.h"
+#include "command_pwd.h"
 
 int main(void){
 
@@ -29,7 +30,12 @@ int main(void){
 
         line_ptr[strlen(line_ptr) - 1] = 0;
 
-        cd(line_ptr);
+        if(str_prefix("cd", line_ptr)){
+            cd(&line_ptr[3]);
+        }
+        else if(!strcmp("pwd", line_ptr)){
+            pwd();
+        }
     }
 
     return 0;

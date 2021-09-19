@@ -13,6 +13,10 @@ void init(){
     gethostname(host_name, HOST_NAME_MAX);
 }
 
+bool str_prefix(const char* pre, const char* str){
+    return strncmp(pre, str, strlen(pre)) == 0;
+}
+
 void get_relative_path(char* path){
 
     // root_dir = getcwd(NULL, 0);
