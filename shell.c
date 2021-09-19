@@ -3,6 +3,7 @@
 #include "utils.h"
 #include "command_cd.h"
 #include "command_pwd.h"
+#include "command_echo.h"
 
 int main(void){
 
@@ -33,8 +34,11 @@ int main(void){
         if(str_prefix("cd", line_ptr)){
             cd(&line_ptr[3]);
         }
-        else if(!strcmp("pwd", line_ptr)){
+        else if(str_prefix("pwd", line_ptr)){
             pwd();
+        }
+        else if(str_prefix("echo", line_ptr)){
+            echo(&line_ptr[5]);
         }
     }
 
