@@ -4,6 +4,7 @@
 #include "command_cd.h"
 #include "command_pwd.h"
 #include "command_echo.h"
+#include "command_pinfo.h"
 
 int main(void){
 

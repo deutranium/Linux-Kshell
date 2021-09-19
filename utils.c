@@ -5,6 +5,7 @@
 #include "command_pwd.h"
 #include "command_echo.h"
 #include "command_ls.h"
+#include "command_pinfo.h"
 
 
 // initialise the main variables
@@ -24,21 +25,28 @@ bool str_prefix(const char* pre, const char* str){
 }
 
 // get relative path
-void get_relative_path(char* path){
+char* get_relative_path(char* path){
     char temp_root_dir[PATH_MAX];
     char temp_ch = '/';
+    static char new_path[PATH_MAX] = "";
+    static char final_path[PATH_MAX] = "~";
+
     strcpy(temp_root_dir, root_dir);
     strncat(temp_root_dir, &temp_ch, 1);
 
     if(!strcmp(root_dir, path)){
-        strcpy(relative_path, "~");
+        strcpy(final_path, "~");
     }
     else if(!str_prefix(temp_root_dir, path)){
-        strcpy(relative_path, path);
+        strcpy(final_path, path);
     }
     else{
-        strncpy(relative_path, &path[strlen(root_dir)], (strlen(path) - strlen(root_dir) + 2));
+        strncpy(new_path, &path[strlen(root_dir)], (strlen(path) - strlen(root_dir) + 2));
+        strcat(final_path, new_path);
     }
+
+
+    return final_path;
 }
 
 char* trim_str(char* orig_str){
@@ -90,6 +98,9 @@ void run_command(char* command){
     else if(str_prefix("ls", command)){
         ls(&command[2]);
     }
+    else if(str_prefix("pinfo", command)){
+        pinfo(&command[5]);
+    }
 
     return;
 }
@@ -116,3 +127,4 @@ void parse_input_string(char* str){
 
     return;
 }
+

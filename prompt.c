@@ -4,7 +4,8 @@
 
 void prompt(){
     char* abs_path = getcwd(NULL, 0);
-    get_relative_path(abs_path);
+    // char* relative_path;
+    relative_path = get_relative_path(abs_path);
 
     printf("%s@%s | %s →  ", logged_user_name, host_name, relative_path);
 

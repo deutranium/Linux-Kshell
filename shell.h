@@ -12,11 +12,14 @@ char* logged_user_name;
 char* host_name;
 char* root_dir;
 
-char relative_path[PATH_MAX + 1];
+char* relative_path;
 char* absolute_path;
 char* prev_path;
 
 char* command_list[100][1000];
+
+#define MAX_STAT_LEN 1024
+#define STAT_COUNT 52 
 
 
 #endif
