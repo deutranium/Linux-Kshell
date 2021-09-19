@@ -19,7 +19,8 @@ char* prev_path;
 char* command_list[100][1000];
 
 #define MAX_STAT_LEN 1024
-#define STAT_COUNT 52 
+#define STAT_COUNT 52
+#define TOK_BUFFER_SIZE 1024
 
 
 #endif

@@ -20,6 +20,7 @@ void repeat(char* str){
         count++;
     }
 
+    // number of times the command should run
     int num_rep = atoi(num_str);
 
     strcpy(new_cmd, &str[count+1]);
