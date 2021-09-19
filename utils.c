@@ -6,7 +6,6 @@
 void init(){
     root_dir = getcwd(NULL, 0);
     absolute_path = getcwd(NULL, 0);
-    // strcpy(relative_path, root_dir);
 
     logged_user_name = getlogin();
     host_name = (char*)malloc(sizeof(char) * (HOST_NAME_MAX + 1));
@@ -19,22 +18,18 @@ bool str_prefix(const char* pre, const char* str){
 
 void get_relative_path(char* path){
 
-    // root_dir = getcwd(NULL, 0);
-    printf("Root: %s\n", root_dir);
-    printf("Path: %s\n", path);
+    char temp_root_dir[PATH_MAX];
+    char temp_ch = '/';
+    strcpy(temp_root_dir, root_dir);
+    strncat(temp_root_dir, &temp_ch, 1);
 
-    if(strlen(path) < strlen(root_dir)){
-        relative_path = path;
-        printf("%d", 1);
+    if(!strcmp(root_dir, path)){
+        strcpy(relative_path, "~");
     }
-    else if(!(strcmp(path, root_dir) == 0)){
-        relative_path = "~";
-        printf("%d", 2);
+    else if(!str_prefix(temp_root_dir, path)){
+        strcpy(relative_path, path);
     }
     else{
-        strncpy(relative_path, &path[strlen(root_dir)], (strlen(path) - strlen(root_dir) + 1));
-        printf("%d", 3);
+        strncpy(relative_path, &path[strlen(root_dir)], (strlen(path) - strlen(root_dir) + 2));
     }
-
-    printf("New: %s\n", relative_path);
 }

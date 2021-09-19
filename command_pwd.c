@@ -13,5 +13,4 @@ void pwd(){
     }
 
     printf("%s\n", pwd);
-
 }

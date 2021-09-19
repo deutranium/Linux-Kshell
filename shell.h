@@ -12,8 +12,9 @@ char* logged_user_name;
 char* host_name;
 char* root_dir;
 
-char* relative_path;
+char relative_path[PATH_MAX + 1];
 char* absolute_path;
+char* prev_path;
 
 
 #endif
