@@ -6,6 +6,7 @@
 void init(){
     root_dir = getcwd(NULL, 0);
     absolute_path = getcwd(NULL, 0);
+    prev_path = getcwd(NULL, 0);
 
     logged_user_name = getlogin();
     host_name = (char*)malloc(sizeof(char) * (HOST_NAME_MAX + 1));
