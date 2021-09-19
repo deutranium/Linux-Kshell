@@ -6,6 +6,7 @@
 #include "command_echo.h"
 #include "command_ls.h"
 #include "command_pinfo.h"
+#include "command_repeat.h"
 
 
 // initialise the main variables
@@ -100,6 +101,9 @@ void run_command(char* command){
     }
     else if(str_prefix("pinfo", command)){
         pinfo(&command[5]);
+    }
+    else if(str_prefix("repeat", command)){
+        repeat(&command[7]);
     }
 
     return;
