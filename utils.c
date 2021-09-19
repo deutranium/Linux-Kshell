@@ -4,6 +4,7 @@
 #include "command_cd.h"
 #include "command_pwd.h"
 #include "command_echo.h"
+#include "command_ls.h"
 
 
 // initialise the main variables
@@ -40,26 +41,29 @@ void get_relative_path(char* path){
     }
 }
 
-char* trim_str(char* trim_str){
+char* trim_str(char* orig_str){
+
+    char new_orig[PATH_MAX + 1] = "";
+    strcpy(new_orig, orig_str);
+
     int count = 0;
     static char str[1000] = "";
 
     for(int i = 0; i < 1000; i++)
         str[i] = 0;
 
-    for(int i = 0; trim_str[i] != '\0'; i++){
-        if(trim_str[i] == '\t')
-            trim_str[i] = ' ';
+    for(int i = 0; new_orig[i] != '\0'; i++){
+        if(new_orig[i] == '\t')
+            new_orig[i] = ' ';
     }
 
-    while(trim_str[count] == ' '){
+    while(new_orig[count] == ' '){
         count++;
     }
 
-    for(int i = count, j = 0; trim_str[i] != 0; i++, j++){
-        str[j] = trim_str[i];
+    for(int i = count, j = 0; new_orig[i] != 0; i++, j++){
+        str[j] = new_orig[i];
     }
-
     int new_len = strlen(str);
 
     for(int i = new_len - 1; i > 0; i--){
@@ -82,6 +86,9 @@ void run_command(char* command){
     }
     else if(str_prefix("echo", command)){
         echo(&command[5]);
+    }
+    else if(str_prefix("ls", command)){
+        ls(&command[2]);
     }
 
     return;
